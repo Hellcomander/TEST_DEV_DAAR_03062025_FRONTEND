@@ -5,6 +5,7 @@ import { MatToolbar } from '@angular/material/toolbar';
 import { RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -16,11 +17,16 @@ import { MatButtonModule } from '@angular/material/button';
     MatToolbar,
     RouterOutlet,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule
   ],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
 export class Home {
+  menuOpened: boolean = true;
 
+  changeMenuState() {
+    this.menuOpened = !this.menuOpened
+  }
 }

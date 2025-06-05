@@ -11,18 +11,13 @@
   padding: 16px;
 }
 
-.icon-white-large {
-  color: white;
-  font-size: 1.5rem;
-}
-
 a.active {
   background-color: var(--selected-nav-color);
   font-weight: bold !important;
 }
 
 a:hover {
-  background-color: var(--selected-nav-color);
+  background-color: var(--hovered-nav-color);
 }
 
 a span {

@@ -1,0 +1,58 @@
+<div style="display: flex !important; align-items: center; justify-content: space-between !important;">
+  <div style="display: flex; align-items: center; gap: 8px;">
+    <mat-icon matListIcon class="icon-white-large" style="color: black !important;">how_to_reg</mat-icon>
+    <h2>Personas Físicas</h2>
+  </div>
+  <div style="display: flex !important; justify-content: end !important;">
+    <button matButton="filled" color="primary" type="button" (click)="addNew()">
+        <mat-icon>person_add</mat-icon>
+        Agregar persona
+    </button>
+  </div>
+</div>
+<table mat-table [dataSource]="individuals" class="mat-elevation-z8">
+  <ng-container matColumnDef="idPersonaFisica">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.idPersonaFisica}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="apellidoPaterno">
+    <th mat-header-cell *matHeaderCellDef> Apellido Paterno </th>
+    <td mat-cell *matCellDef="let element"> {{element.apellidoPaterno}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="apellidoMaterno">
+    <th mat-header-cell *matHeaderCellDef> Apellido Materno </th>
+    <td mat-cell *matCellDef="let element"> {{element.apellidoMaterno}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="rfc">
+    <th mat-header-cell *matHeaderCellDef> RFC </th>
+    <td mat-cell *matCellDef="let element"> {{element.rfc}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fechaNacimiento">
+    <th mat-header-cell *matHeaderCellDef> Fecha Nacimiento </th>
+    <td mat-cell *matCellDef="let element">   {{ element.fechaNacimiento | date:'dd-MM-yyyy' }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button color="primary" (click)="editIndividual(element)" class="btn-edit">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="deleteIndividual(element)" class="btn-delete">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

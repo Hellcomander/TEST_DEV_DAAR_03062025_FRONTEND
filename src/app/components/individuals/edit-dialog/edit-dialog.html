@@ -1,0 +1,50 @@
+<div style="display: flex !important; justify-content: center !important; align-items: center !important;">
+  <mat-icon style="margin-right: 10px;">edit</mat-icon>
+  <h2 mat-dialog-title>{{ isEdit ? 'Editar Persona' : 'Nueva Persona' }}</h2>
+</div>
+<form [formGroup]="form" (ngSubmit)="save()" style="padding: 10px !important;">
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Nombre</mat-label>
+    <mat-icon matPrefix>person</mat-icon>
+    <input matInput formControlName="Nombre">
+    <mat-error *ngIf="form.get('Nombre')?.hasError('required')">Nombre obligatorio</mat-error>
+    <mat-error *ngIf="form.get('Nombre')?.hasError('maxLength')">Máximo 50 caracteres</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-icon matPrefix>person</mat-icon>
+    <mat-label>Apellido Paterno</mat-label>
+    <input matInput formControlName="ApellidoPaterno">
+    <mat-error *ngIf="form.get('ApellidoPaterno')?.hasError('required')">El apellido paterno es obligatorio</mat-error>
+    <mat-error *ngIf="form.get('ApellidoPaterno')?.hasError('maxLength')">Máximo 50 caracteres</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-icon matPrefix>person</mat-icon>
+    <mat-label>Apellido Materno</mat-label>
+    <input matInput formControlName="ApellidoMaterno">
+    <mat-error *ngIf="form.get('ApellidoMaterno')?.hasError('required')">El apellido materno es obligatorio</mat-error>
+    <mat-error *ngIf="form.get('ApellidoMaterno')?.hasError('maxLength')">Máximo 50 caracteres</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-icon matPrefix>badge</mat-icon>
+    <mat-label>RFC</mat-label>
+    <input matInput formControlName="Rfc">
+    <mat-error *ngIf="form.get('Rfc')?.hasError('required')">El RFC es obligatorio</mat-error>
+    <mat-error *ngIf="form.get('Rfc')?.hasError('maxLength')">Máximo 13 caracteres</mat-error>
+    <mat-error *ngIf="form.get('Rfc')?.hasError('pattern')">Ingresa un RFC válido</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-icon matPrefix>child_friendly</mat-icon>
+    <mat-label>Fecha de nacimiento</mat-label>
+    <input matInput formControlName="FechaNacimiento" type="date">
+    <mat-error *ngIf="form.get('FechaNacimiento')?.hasError('required')">La fecha de nacimiento es obligatoria</mat-error>
+  </mat-form-field>
+
+  <div mat-dialog-actions class="buttons-area">
+    <button mat-raised-button type="button" (click)="dialogRef.close()" style="margin-right: .5rem;">Cancelar</button>
+    <button matButton="filled" color="primary" type="submit">{{ isEdit ? 'Guardar' : 'Agregar' }}</button>
+  </div>
+</form>

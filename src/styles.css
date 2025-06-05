@@ -4,12 +4,35 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 :root {
-  --primary-color: #00315c;
+  --primary-color: #2a497a;
   --primary-color-container: #dae2f9;
   --accent-color: #90caf9;
   --text-color: #ffffff;
   --background-color: #bec6dc;
   --secondary-color: #565f71;
-  --selected-nav-color: #dae2f9;
-  --hovered-nav-color: #cee68f;
+  --hovered-nav-color: #f0f0f7;
+  --selected-nav-color: #705575;
+  --tertiary-color: #3a2440;
+}
+
+th {
+  background-color: var(--tertiary-color) !important;
+  color: white !important;
+  font-weight: bold !important;
+}
+
+td {
+  font-weight: bold !important;
+}
+
+.icon-white-large {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.btn-edit:hover {
+  color: #0060e6 !important;
+}
+.btn-delete:hover {
+  color: #98000a !important;
 }
