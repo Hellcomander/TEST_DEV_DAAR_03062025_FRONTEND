@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root {
+  --primary-color: #00315c;
+  --primary-color-container: #dae2f9;
+  --accent-color: #90caf9;
+  --text-color: #ffffff;
+  --background-color: #bec6dc;
+  --secondary-color: #565f71;
+  --selected-nav-color: #dae2f9;
+  --hovered-nav-color: #cee68f;
+}

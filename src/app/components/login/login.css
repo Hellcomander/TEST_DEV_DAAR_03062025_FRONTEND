@@ -1,0 +1,45 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: var(--primary-color);
+}
+
+mat-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  background-color: var(--primary-color-container);
+}
+
+.full-width {
+  width: 100%;
+}
+
+mat-card-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    font-weight: bold;
+    color: black;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+.btn-large {
+  width: 100%;
+  max-width: 50vh;
+  box-sizing: border-box;
+}

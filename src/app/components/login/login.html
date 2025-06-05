@@ -1,0 +1,54 @@
+<div class="login-container">
+  <mat-card>
+    <mat-card-title>¡Bienvenido!</mat-card-title>
+    <mat-card-content>
+      <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Correo electrónico</mat-label>
+          <mat-icon matPrefix>email</mat-icon>
+          <input matInput formControlName="email" placeholder="example@another.com" type="email" required maxlength="100">
+          <mat-error *ngIf="emailInput?.hasError('required')">
+            El correo electrónico es requerido
+          </mat-error>
+          <mat-error *ngIf="emailInput?.hasError('email')">
+            Ingresa un correo electrónico válido
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-icon matPrefix>key</mat-icon>
+          <input matInput [type]="hide ? 'password' : 'text'" placeholder="Contraseña" formControlName="password">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Toggle password visibility'" [attr.aria-pressed]="!hide" type="button">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <div class="buttons-container">
+          <button matButton="filled"  color="primary" class="btn-large btn-primary" type="submit"
+                  [disabled]="loginForm.invalid || isLoading">
+            <ng-container *ngIf="!isLoading; else loadingTemplate">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <mat-icon>login</mat-icon>
+                Iniciar Sesión
+              </div>
+            </ng-container>
+
+            <ng-template #loadingTemplate>
+              <mat-progress-spinner
+                diameter="20"
+                mode="indeterminate"
+                color="accent"
+                [style.verticalAlign]="'middle'">
+              </mat-progress-spinner>
+            </ng-template>
+          </button>
+
+          <button mat-raised-button color="secondary" class="btn-large btn-secondary" type="button">
+              <mat-icon>person_add</mat-icon>
+              Registrarte
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
