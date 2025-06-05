@@ -32,3 +32,10 @@ a:hover .icon-white-large {
   color: black !important;
 }
 
+.btn-logout {
+  color: white !important;
+}
+
+.btn-logout:hover {
+  background-color: #98000a !important;
+}

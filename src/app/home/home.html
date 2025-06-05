@@ -1,20 +1,28 @@
 <mat-sidenav-container>
   <mat-sidenav mode="side" [opened]="menuOpened" class="sidenav-body">
-  <mat-nav-list>
-    <a mat-list-item routerLink="customers" routerLinkActive="active">
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <mat-icon matListIcon class="icon-white-large">group</mat-icon>
-          <span>Clientes</span>
-        </div>
-    </a>
-    <a mat-list-item routerLink="individuals" routerLinkActive="active">
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <mat-icon matListIcon class="icon-white-large">how_to_reg</mat-icon>
-          <span>Personas Físicas</span>
-        </div>
-    </a>
-  </mat-nav-list>
-
+    <div style="display: flex; justify-content: start; padding: 16px;">
+      <img src="https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/13b398e60f65b4d7b994c4bdb155ee4d" alt="Logo" style="height: 50px;" />
+    </div>
+    <mat-nav-list style="height: 85%;">
+      <a mat-list-item routerLink="customers" routerLinkActive="active">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <mat-icon matListIcon class="icon-white-large">group</mat-icon>
+            <span>Clientes</span>
+          </div>
+      </a>
+      <a mat-list-item routerLink="individuals" routerLinkActive="active">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <mat-icon matListIcon class="icon-white-large">how_to_reg</mat-icon>
+            <span>Personas Físicas</span>
+          </div>
+      </a>
+    </mat-nav-list>
+    <div style="padding: 16px; margin-top: auto;">
+      <button mat-button class="btn-logout" (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        Cerrar sesión
+      </button>
+    </div>
   </mat-sidenav>
 
   <mat-sidenav-content class="sidenav-container">

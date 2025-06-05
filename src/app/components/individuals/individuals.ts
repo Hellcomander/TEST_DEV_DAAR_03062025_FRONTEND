@@ -53,7 +53,7 @@ export class Individuals implements OnInit {
 
     Swal.fire({...this.swalLoaderOptions, text: 'Obteniendo información...'});
 
-    this.http.get(`${environment.apiUrl}persona-fisica`)
+    this.http.get(`${environment.apiUrl}/persona-fisica`)
         .subscribe({
           next: (response: any) => {
             this.individuals = response.map((individual: any) => {
@@ -70,6 +70,7 @@ export class Individuals implements OnInit {
             Swal.close();
           },
           error: (error) => {
+            console.error(error);
             Swal.close();
             Swal.fire('Error', 'No se pudo cargar la información', 'error');
           },
@@ -85,7 +86,7 @@ export class Individuals implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         Swal.fire({...this.swalLoaderOptions, text: 'Guardando información...'});
-        this.http.post(`${environment.apiUrl}persona-fisica`, {...result, UsuarioAgrega: 1}).subscribe({
+        this.http.post(`${environment.apiUrl}/persona-fisica`, {...result, UsuarioAgrega: 1}).subscribe({
           next: (created: any) => {
             Swal.close();
             Swal.fire('Agregado', 'La persona fue registrada correctamente.', 'success');
@@ -110,7 +111,7 @@ export class Individuals implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         Swal.fire({...this.swalLoaderOptions, text: 'Guardando información...'});
-        this.http.put(`${environment.apiUrl}persona-fisica/${result.IdPersonaFisica}`, result).subscribe({
+        this.http.put(`${environment.apiUrl}/persona-fisica/${result.IdPersonaFisica}`, result).subscribe({
           next: () => {
             Swal.close();
             Swal.fire('Actualizado', 'La persona fue actualizada correctamente.', 'success');
@@ -152,7 +153,7 @@ export class Individuals implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire({...this.swalLoaderOptions, text: 'Eliminado...'});
-        this.http.delete(`${environment.apiUrl}persona-fisica/${individual.idPersonaFisica}`)
+        this.http.delete(`${environment.apiUrl}/persona-fisica/${individual.idPersonaFisica}`)
           .subscribe({
             next: () => {
               Swal.close();

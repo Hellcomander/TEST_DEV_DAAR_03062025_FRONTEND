@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatSidenavContainer, MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbar } from '@angular/material/toolbar';
@@ -6,6 +6,7 @@ import { RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -25,8 +26,13 @@ import { RouterModule } from '@angular/router';
 })
 export class Home {
   menuOpened: boolean = true;
+  authService: AuthService = inject(AuthService);
 
   changeMenuState() {
     this.menuOpened = !this.menuOpened
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

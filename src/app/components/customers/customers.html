@@ -1,3 +1,16 @@
+
+<div style="display: flex !important; align-items: center; justify-content: space-between !important;">
+  <div style="display: flex; align-items: center; gap: 8px;">
+    <mat-icon matListIcon class="icon-white-large" style="color: black !important;">group</mat-icon>
+    <h2>Clientes</h2>
+  </div>
+  <div style="display: flex !important; justify-content: end !important;">
+    <button matButton="filled" style="background-color: #4CAF50 !important; color: white;" type="button" (click)="exportExcel()">
+        <mat-icon>table</mat-icon>
+        Exportar a Excel
+    </button>
+  </div>
+</div>
 <table mat-table [dataSource]="[]" class="mat-elevation-z8">
 
   <!--- Note that these columns can be defined in any order.

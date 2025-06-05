@@ -11,6 +11,9 @@ import { LoginDto } from '../../dtos/login.dto';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../env/environment';
 import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +25,8 @@ import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    SweetAlert2Module
   ],
   templateUrl: './login.html',
   styleUrl: './login.css'
@@ -32,6 +36,7 @@ export class Login implements OnInit {
   hide: boolean = true;
   isLoading: boolean = false;
   private http = inject(HttpClient);
+  router: Router = inject(Router);
 
   constructor(private fb: FormBuilder) { }
 
@@ -54,16 +59,17 @@ export class Login implements OnInit {
       Password: formValues.password,
     }
 
-    this.http.post(`${environment.apiUrl}/candidato/api/login/authenticate`, {
-      params: authData
-    }).subscribe({
-      next: (response) => {
-        console.log('Login exitoso', response);
+    this.http.post(`${environment.apiUrl}/user/login`, authData).subscribe({
+      next: (response: any) => {
+        localStorage.setItem('accessToken', response.accessToken);
+        localStorage.setItem('tokenToka', response.tokenToka);
+        this.router.navigate(['/home']);
+
         this.isLoading = false;
       },
-      error: (error) => {
-        console.error('Error en login', error);
+      error: () => {
         this.isLoading = false;
+        Swal.fire('Error', 'Usuario o contraseña incorrectos', 'error');
       },
     })
   }
